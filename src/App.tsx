@@ -1,11 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useContext } from "react";
+import logo from "img/logo.svg";
+import "css/App.scss";
+import { AppContext } from "context";
 
-function App() {
+const App: FC = () => {
+  const { appState } = useContext(AppContext);
   return (
     <div className="App">
       <header className="App-header">
+        <h1>App version: {appState.version}</h1>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -21,6 +24,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
