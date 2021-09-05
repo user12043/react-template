@@ -1,4 +1,4 @@
-import { User } from "models";
+import { User } from "utils/models";
 import React, { FC, useReducer } from "react";
 
 type AppState = {

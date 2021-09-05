@@ -1,5 +1,6 @@
 {
   "name": "react-template",
+  "displayName": "React Template",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080/",

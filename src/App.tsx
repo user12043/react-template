@@ -9,6 +9,7 @@ import Aside from "components/aside";
 import Page1 from "views/page1";
 import Page2 from "views/page2";
 import Page3 from "views/page3";
+import { PATHS } from "utils/constants";
 
 const App: FC = () => {
   const { appState } = useContext(AppContext);
@@ -21,31 +22,31 @@ const App: FC = () => {
       <article id="article" className="pt-3">
         <Switch>
           {appState.loggedUser ? (
-            pathname === "/login" ? (
+            pathname === PATHS.LOGIN ? (
               <Redirect to="/" />
             ) : (
               <div className="container">
                 <Route path="/" exact>
                   <h1>HOME</h1>
                 </Route>
-                <Route path="/page1">
+                <Route path={PATHS.PAGE1}>
                   <Page1 />
                 </Route>
-                <Route path="/page2">
+                <Route path={PATHS.PAGE2}>
                   <Page2 />
                 </Route>
-                <Route path="/page3">
+                <Route path={PATHS.PAGE3}>
                   <Page3 />
                 </Route>
               </div>
             )
           ) : (
-            <Route path="/login">
+            <Route path={PATHS.LOGIN}>
               <Login />
             </Route>
           )}
           <Route path="*">
-            <Redirect to={appState.loggedUser ? "/" : "/login"} />
+            <Redirect to={appState.loggedUser ? "/" : PATHS.LOGIN} />
           </Route>
         </Switch>
       </article>
