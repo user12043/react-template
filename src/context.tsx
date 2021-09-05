@@ -1,11 +1,14 @@
+import { User } from "models";
 import React, { FC, useReducer } from "react";
 
 type AppState = {
   version: string;
+  loggedUser: User | null;
 };
 
 const initialState: AppState = {
-  version: process?.env?.REACT_APP_VERSION || "undefined-version"
+  version: process?.env?.REACT_APP_VERSION || "undefined-version",
+  loggedUser: null
 };
 
 type AppDispatch = React.Dispatch<any>;
@@ -25,6 +28,16 @@ export const AppContext = React.createContext<AppContextValue>(
 );
 
 const appReducer = (state: AppState, action: any) => {
+  switch (action.type) {
+    case "LOGIN":
+      return {
+        ...state,
+        loggedUser: action.payload
+      };
+
+    default:
+      break;
+  }
   return state;
 };
 
