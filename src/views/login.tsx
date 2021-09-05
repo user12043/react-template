@@ -15,7 +15,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container h-100">
+    <section className="container h-100">
       <div className="row h-100 align-items-center px-2">
         <form
           className="col-md-4 offset-md-4 bg-dark p-3 rounded"
@@ -63,7 +63,7 @@ const Login = () => {
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
