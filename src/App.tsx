@@ -15,12 +15,12 @@ const App: FC = () => {
   const { appState } = useContext(AppContext);
   const { pathname } = useLocation();
   return (
-    <div className="h-100">
+    <div className="h-100 bg-dark bg-gradient">
       <header id="header">
         <NavBar />
       </header>
       <article id="article" className="pt-3">
-        <div className="container">
+        <section className="container h-100">
           <Switch>
             {appState.loggedUser ? (
               pathname === PATHS.LOGIN ? (
@@ -50,7 +50,7 @@ const App: FC = () => {
               <Redirect to={appState.loggedUser ? "/" : PATHS.LOGIN} />
             </Route>
           </Switch>
-        </div>
+        </section>
       </article>
       <aside>{appState.loggedUser ? <Aside /> : null}</aside>
       <footer>
