@@ -33,6 +33,13 @@ code {
 }
 
 #navbarLogo {
-    width: 6vw;
-    height: 6vh;
+    width: 2vw;
+    min-width: 40px;
+}
+
+#asideBar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
 }
