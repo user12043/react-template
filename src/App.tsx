@@ -20,35 +20,37 @@ const App: FC = () => {
         <NavBar />
       </header>
       <article id="article" className="pt-3">
-        <Switch>
-          {appState.loggedUser ? (
-            pathname === PATHS.LOGIN ? (
-              <Redirect to="/" />
+        <div className="container">
+          <Switch>
+            {appState.loggedUser ? (
+              pathname === PATHS.LOGIN ? (
+                <Redirect to="/" />
+              ) : (
+                <>
+                  <Route path="/" exact>
+                    <h1>HOME</h1>
+                  </Route>
+                  <Route path={PATHS.PAGE1}>
+                    <Page1 />
+                  </Route>
+                  <Route path={PATHS.PAGE2}>
+                    <Page2 />
+                  </Route>
+                  <Route path={PATHS.PAGE3}>
+                    <Page3 />
+                  </Route>
+                </>
+              )
             ) : (
-              <div className="container">
-                <Route path="/" exact>
-                  <h1>HOME</h1>
-                </Route>
-                <Route path={PATHS.PAGE1}>
-                  <Page1 />
-                </Route>
-                <Route path={PATHS.PAGE2}>
-                  <Page2 />
-                </Route>
-                <Route path={PATHS.PAGE3}>
-                  <Page3 />
-                </Route>
-              </div>
-            )
-          ) : (
-            <Route path={PATHS.LOGIN}>
-              <Login />
+              <Route path={PATHS.LOGIN}>
+                <Login />
+              </Route>
+            )}
+            <Route path="*">
+              <Redirect to={appState.loggedUser ? "/" : PATHS.LOGIN} />
             </Route>
-          )}
-          <Route path="*">
-            <Redirect to={appState.loggedUser ? "/" : PATHS.LOGIN} />
-          </Route>
-        </Switch>
+          </Switch>
+        </div>
       </article>
       <aside>{appState.loggedUser ? <Aside /> : null}</aside>
       <footer>
