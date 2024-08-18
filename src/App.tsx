@@ -2,7 +2,7 @@ import React, { FC, useContext } from "react";
 import "css/App.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { AppContext } from "context";
-import { Redirect, Route, Switch, useLocation } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Login from "views/login";
 import NavBar from "components/navbar";
 import Aside from "components/aside";
@@ -21,35 +21,28 @@ const App: FC = () => {
       </header>
       <article id="article" className="pt-3">
         <section className="container h-100">
-          <Switch>
+          <Routes>
             {appState.loggedUser ? (
               pathname === PATHS.LOGIN ? (
-                <Redirect to="/" />
+                <Route path={PATHS.LOGIN} element={<Navigate to="/" />} />
               ) : (
                 <>
-                  <Route path="/" exact>
-                    <h1>HOME</h1>
-                  </Route>
-                  <Route path={PATHS.PAGE1}>
-                    <Page1 />
-                  </Route>
-                  <Route path={PATHS.PAGE2}>
-                    <Page2 />
-                  </Route>
-                  <Route path={PATHS.PAGE3}>
-                    <Page3 />
-                  </Route>
+                  <Route path="/" element={<h1>HOME</h1>}></Route>
+                  <Route path={PATHS.PAGE1} element={<Page1 />}></Route>
+                  <Route path={PATHS.PAGE2} element={<Page2 />}></Route>
+                  <Route path={PATHS.PAGE3} element={<Page3 />}></Route>
                 </>
               )
             ) : (
-              <Route path={PATHS.LOGIN}>
-                <Login />
-              </Route>
+              <Route path={PATHS.LOGIN} element={<Login />}></Route>
             )}
-            <Route path="*">
-              <Redirect to={appState.loggedUser ? "/" : PATHS.LOGIN} />
-            </Route>
-          </Switch>
+            <Route
+              path="*"
+              element={
+                <Navigate to={appState.loggedUser ? "/" : PATHS.LOGIN} />
+              }
+            ></Route>
+          </Routes>
         </section>
       </article>
       <aside>{appState.loggedUser ? <Aside /> : null}</aside>

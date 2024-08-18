@@ -1,5 +1,5 @@
 import { User } from "utils/models";
-import React, { FC, useReducer } from "react";
+import React, { useReducer, ReactNode } from "react";
 
 type AppState = {
   version: string;
@@ -47,7 +47,7 @@ const appReducer = (state: AppState, action: any) => {
   return state;
 };
 
-export const AppContextProvider: FC = ({ children }) => {
+export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
   return (
     <AppContext.Provider value={{ appState: state, appDispatch: dispatch }}>

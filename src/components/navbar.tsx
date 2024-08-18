@@ -1,11 +1,11 @@
 import React, { FC, useContext } from "react";
 import Logo from "img/logo.svg";
 import { AppContext } from "context";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { PATHS } from "utils/constants";
 
 const NavBar: FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const {
     appState: { loggedUser },
@@ -13,7 +13,7 @@ const NavBar: FC = () => {
   } = useContext(AppContext);
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-      <span className="navbar-brand mb-0 h1" onClick={() => history.push("/")}>
+      <span className="navbar-brand mb-0 h1" onClick={() => navigate("/")}>
         <img
           id="navbarLogo"
           className="rounded d-inline-block align-text-center"
