@@ -7,7 +7,7 @@ type AppState = {
 };
 
 const initialState: AppState = {
-  version: process?.env?.REACT_APP_VERSION || "undefined-version",
+  version: import.meta.env?.VITE_APP_VERSION || "undefined-version",
   loggedUser: null
 };
 
