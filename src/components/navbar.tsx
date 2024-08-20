@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import Logo from "img/logo.svg";
 import { AppContext } from "context";
 import { NavLink, useNavigate } from "react-router-dom";

@@ -1,3 +1,4 @@
+/// <reference types="vite/types/importMeta.d.ts" />
 import { User } from "utils/models";
 import React, { useReducer, ReactNode } from "react";
 

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import "css/App.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { AppContext } from "context";
